@@ -1,12 +1,25 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from 'react'
 
-function Timer({isPaused, currentMode}) {
+function Timer({isPaused, currentMode, setIsPaused}) {
   const [seconds, setSeconds] = useState(currentMode.time);
   const secRef = useRef();
   const minRef = useRef();
+
+  useEffect(() => {
+    setSeconds(currentMode.time);
+  }, [currentMode.time]);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      setIsPaused(true);
+      setSeconds(currentMode.time)
+    }
+  }, [seconds]);
+
   useEffect(() => {
     let interval;
+    console.log(currentMode.time);
     if (!isPaused) {
       if (secRef.current){
         minRef.current.classList.add("font-extrabold");
