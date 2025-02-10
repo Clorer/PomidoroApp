@@ -18,6 +18,7 @@ function App() {
   const [focusTime, setFocusTime] = useState(25);
   const [shortBreakTime, setShortBreakTime] = useState(5);
   const [longBreak, setLongBreakTime] = useState(15);
+  const [currentModeIndex, setCurrentModeIndex] = useState(0);
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme !== null ? JSON.parse(savedTheme) : false;
@@ -63,12 +64,12 @@ function App() {
     },
   ]
 
-  const currentMode = mode[0];
+  const currentMode = mode[currentModeIndex];
   return (
     <>
       <div className={`${currentMode.bgColor} w-screen h-screen flex flex-col items-center pt-[5%]`}>
         <Header currentMode={currentMode} />
-        <Timer isDark={isDark} isPaused={isPaused} setIsPaused={setIsPaused} currentMode={currentMode} />
+        <Timer isPaused={isPaused} setIsPaused={setIsPaused} currentMode={currentMode} currentModeIndex={currentModeIndex} setCurrentModeIndex={setCurrentModeIndex} />
         <Buttons isDark={isDark} isPaused={isPaused} setIsPaused={setIsPaused} currentMode={currentMode} />
         <Settings isDark={isDark} setIsDark={setIsDark} focusTime={focusTime} setFocusTime={setFocusTime} shortBreakTime={shortBreakTime} setShortBreakTime={setShortBreakTime} longBreak={longBreak} setLongBreakTime={setLongBreakTime} />
       </div>

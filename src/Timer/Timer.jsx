@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from 'react'
+import sound from"./timer_end.mp3"
 
-function Timer({isDark, isPaused, currentMode, setIsPaused}) {
+function Timer({isPaused, currentMode, setIsPaused, currentModeIndex, setCurrentModeIndex}) {
   const [seconds, setSeconds] = useState(currentMode.time);
+  const [counter, setCounter] = useState(0);
+
+  const audio = new Audio(sound);
   const secRef = useRef();
   const minRef = useRef();
 
@@ -12,10 +16,26 @@ function Timer({isDark, isPaused, currentMode, setIsPaused}) {
 
   useEffect(() => {
     if (seconds === 0) {
-      setIsPaused(true);
-      setSeconds(currentMode.time)
+      setSeconds(currentMode.time);
+      audio.play();
+      setCounter((prevCounter) => {
+        if (prevCounter === 0 || prevCounter === 2) {
+          setCurrentModeIndex(1);
+          return prevCounter + 1;
+        } else if (prevCounter === 4) {
+          setCurrentModeIndex(2);
+          return prevCounter + 1;
+        } else if (prevCounter === 5) {
+          setCurrentModeIndex(0);
+          return 0;
+        } else {
+          setCurrentModeIndex(0);
+          return prevCounter + 1;
+        }
+      });
     }
-  }, [seconds]);
+  }, [seconds, currentMode.time]);
+  
 
   useEffect(() => {
     let interval;
