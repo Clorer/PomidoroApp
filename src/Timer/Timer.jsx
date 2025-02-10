@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from 'react'
 
-function Timer({isPaused, currentMode, setIsPaused}) {
+function Timer({isDark, isPaused, currentMode, setIsPaused}) {
   const [seconds, setSeconds] = useState(currentMode.time);
   const secRef = useRef();
   const minRef = useRef();

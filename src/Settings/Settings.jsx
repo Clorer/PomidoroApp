@@ -14,7 +14,7 @@ function Settings({isDark, setIsDark, focusTime, setFocusTime, shortBreakTime, s
   return (
     <>
       <div id="settingsModal" className="pt-[13rem] fixed inset-0 z-50 hidden">
-        <div className="relative bg-gray-900 p-8 w-full max-w-sm m-auto rounded-2xl text-white flex flex-col gap-4">
+        <div className="relative bg-black p-8 w-full max-w-sm m-auto rounded-2xl text-white flex flex-col gap-4">
           <h2 className="text-xl font-bold mb-4">Settings</h2>
 
           <button

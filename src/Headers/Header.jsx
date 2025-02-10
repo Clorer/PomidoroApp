@@ -2,9 +2,9 @@
 
 function Header({currentMode}) {
   return (
-    <div className={`px-[10px] py-[5px] ${currentMode.bgColor} rounded-3xl border border-white border-solid`}>
-      <img src={currentMode.image} alt="logo" className="size-[28px] inline" />
-      <p className="ml-2 text-white text-[16px] inline">{currentMode.title}</p>
+    <div className={`px-[10px] py-[5px] ${currentMode.buttonsColor} rounded-3xl border ${currentMode.borderColor} border-solid flex`}>
+      <img src={currentMode.image} alt="logo" className="size-[28px]" />
+      <p className={`${currentMode.textColor} mt-[0.1rem] font-semibold ml-2 text-[16px]`}>{currentMode.title}</p>
     </div>
   );
 }

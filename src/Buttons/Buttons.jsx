@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
-import dots from "./content/ph_dots-three-outline-fill.svg";
-import play from "./content/ph_play-fill.svg";
-import next from "./content/ph_fast-forward-fill.svg";
-import pausePict from "./content/ph_pause-fill.svg";
+import dotsRed from "./content/red/dots.svg";
+import dotsRedDark from "./content/redDark/dots.svg";
+import playRed from "./content/red/play.svg";
+import playRedDark from "./content/redDark/play.svg";
+import nextRed from "./content/red/next.svg";
+import nextRedDark from "./content/redDark/next.svg";
+import pausePictRed from "./content/red/pause.svg";
+import pausePictRedDark from "./content/redDark/pause.svg";
 
-function Buttons({ isPaused, setIsPaused, currentMode }) {
+function Buttons({isDark, isPaused, setIsPaused, currentMode }) {
   const pause = () => {
     isPaused ? setIsPaused(false) : setIsPaused(true);
   };
@@ -18,24 +22,24 @@ function Buttons({ isPaused, setIsPaused, currentMode }) {
       <div className="flex gap-5">
         <button
           onClick={unhide}
-          className={`w-16 h-16 text-white rounded-xl ${currentMode.bgColor} m-auto`}
+          className={`w-16 h-16 text-white rounded-xl ${currentMode.buttonsColor} m-auto`}
         >
-          <img src={dots} alt="dots" className="m-auto" />
+          <img src={isDark ? dotsRedDark : dotsRed} alt="dots" className="m-auto" />
         </button>
         <button
           onClick={pause}
           className={`w-20 h-20 text-white rounded-xl ${currentMode.playBgColor} m-auto`}
         >
           <img
-            src={isPaused ? play : pausePict}
+            src={isPaused ? (isDark? playRedDark : playRed) : (isDark ? pausePictRedDark : pausePictRed)}
             alt="play"
             className="m-auto"
           />
         </button>
         <button
-          className={`w-16 h-16 text-white rounded-xl ${currentMode.bgColor} m-auto`}
+          className={`w-16 h-16 text-white rounded-xl ${currentMode.buttonsColor} m-auto`}
         >
-          <img src={next} alt="next" className="m-auto" />
+          <img src={isDark ? nextRedDark : nextRed} alt="next" className="m-auto" />
         </button>
       </div>
     </>
