@@ -48,8 +48,8 @@ function Timer({isPaused, currentMode, setIsPaused}) {
 
   return (
     <>
-      <h1 ref={minRef} className="block text-[256px] leading-[200px] text-white">{formatTimeMins(seconds)}</h1>
-      <h1 ref={secRef} className="mb-10 block text-[256px] leading-[200px] text-white">{formatTimeSecs(seconds)}</h1>
+      <h1 ref={minRef} className={`block text-[256px] leading-[200px] ${currentMode.textColor}`}>{formatTimeMins(seconds)}</h1>
+      <h1 ref={secRef} className={`mb-10 block text-[256px] leading-[200px] ${currentMode.textColor}`}>{formatTimeSecs(seconds)}</h1>
     </>
   )
 }

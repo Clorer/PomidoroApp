@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-function Settings({focusTime, setFocusTime, shortBreakTime, setShortBreakTime, longBreak, setLongBreakTime}) {
+function Settings({isDark, setIsDark, focusTime, setFocusTime, shortBreakTime, setShortBreakTime, longBreak, setLongBreakTime}) {
   const hide = () => {
     document.getElementById("settingsModal").classList.add("hidden");
   };
-  const [isDark, setIsDark] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
+
+  const themeChanger = () => {
+    setIsDark(false);
+  };
+
   return (
     <>
       <div id="settingsModal" className="pt-[13rem] fixed inset-0 z-50 hidden">
@@ -28,7 +32,9 @@ function Settings({focusTime, setFocusTime, shortBreakTime, setShortBreakTime, l
                 type="checkbox"
                 className="sr-only peer"
                 checked={isDark}
-                onChange={(el) => setIsDark(el.target.checked)}
+                onChange={(el) => {
+                  setIsDark(el.target.checked)
+                }}
               />
               <div className="w-11 h-6 bg-gray-200 rounded-full bg-black peer-checked:bg-stone-800  transition-colors duration-200">
                 <div
