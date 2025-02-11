@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { render, screen, fireEvent } from '@testing-library/react';
 import Timer from "./Timer/Timer";
 import Buttons from "./Buttons/Buttons";
 import focusLogo from "./Headers/content/ph_brain-fill.svg";
@@ -65,6 +66,13 @@ function App() {
   ]
 
   const currentMode = mode[currentModeIndex];
+
+  test('button click changes text', () => {
+    render(<Buttons />);
+    fireEvent.click(screen.getByTestId("play"));
+    expect(screen.getByAltText('pause')).toBeInTheDocument();
+  });
+
   return (
     <>
       <div className={`${currentMode.bgColor} w-screen h-screen flex flex-col items-center pt-[5%]`}>

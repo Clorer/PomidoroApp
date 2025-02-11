@@ -27,12 +27,13 @@ function Buttons({isDark, isPaused, setIsPaused, currentMode }) {
           <img src={isDark ? dotsRedDark : dotsRed} alt="dots" className="m-auto" />
         </button>
         <button
+          id="play"
           onClick={pause}
           className={`w-20 h-20 text-white rounded-xl ${currentMode.playBgColor} m-auto`}
         >
           <img
             src={isPaused ? (isDark? playRedDark : playRed) : (isDark ? pausePictRedDark : pausePictRed)}
-            alt="play"
+            alt={isPaused ? 'pause' : 'play'}
             className="m-auto"
           />
         </button>
